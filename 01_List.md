@@ -73,3 +73,50 @@ ArrayList와 LinkedList는 활용 방법에 있어서 수행속도차가 존재�
 
 
 
+## ArrayList
+
+Generic을 사용한다.
+
+```java
+import java.util.ArrayList;
+
+ArrayList<Integer> numbers = new ArrayList<>();
+```
+
+
+
+- 기본 메소드 사용법
+
+```java
+numbers.add(10);	// 데이터 추가
+numbers.add(20);
+numbers.add(30);
+numbers.add(1, 50);
+// 20이 저장되어 있는 1번 인덱스 자리에 50을 추가하고 싶다면 아래 코드처럼
+
+numbers.remove(2); // 데이터 삭제
+numbers.get(1);	// 데이터 꺼내기
+numbers.size();	// ArrayList 크기 가져오기
+```
+
+- 데이터 순회
+
+```java
+Iterator it = numbers.iterator();	// Iterator 인터페이스 사용
+
+while(it.hasNext()) {	// hasNext()의 return값은 boolean
+  int value = it.next();
+}
+
+for(int value : numbers) {
+// numbers의 데이터를 차례대로 하나씩 value에 저장
+  System.out.println(value);
+}
+```
+
+
+
+
+
+### ArrayList 구현
+
