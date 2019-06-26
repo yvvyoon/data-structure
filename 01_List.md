@@ -18,7 +18,7 @@
 - 배열은 null로 변경됨
 - 리스트는 후행하는 data[4]가 data[3]으로 당겨짐
 
-
+<br><br>
 
 ### 리스트 기능
 
@@ -28,7 +28,7 @@
 
 가장 기본적인 개념으로서, 리스트의 모든 데이터에 접근이 가능하다.
 
-
+<br><br>
 
 ### 언어별 리스트 비교
 
@@ -36,14 +36,18 @@
 
 리스트를 지원하지 않고, 개발자가 직접 작성하거나 외부 라이브러리를 사용해야 한다.
 
+<br>
+
 #### JavaScript
 
 JavaScript에서는 배열이 곧 리스트이다.
 
-splice() 
+splice()
 
 - 리스트의 삭제 기능을 포함하고 있음
 - 특정 인덱스의 데이터를 삭제하면 후위 인덱스의 데이터가 자동으로 앞으로 이동됨
+
+<br>
 
 #### Python
 
@@ -52,6 +56,8 @@ Python에서도 배열이 곧 리스트이다.
 pop()
 
 - JavaScript의 splice() 메소드와 마찬가지로 리스트의 삭제 기능을 포함하고 있다.
+
+<br>
 
 #### Java
 
@@ -71,7 +77,7 @@ ArrayList와 LinkedList는 활용 방법에 있어서 수행속도차가 존재�
 - ArrayList는 인덱스를 통한 조회가 빠르고, 데이터 추가/삭제가 느리다.
 - 반대로 LinkedList는 인덱스를 통한 조회가 느리고, 데이터 추가/삭제가 빠르다.
 
-
+<br><br>
 
 ## ArrayList
 
@@ -114,9 +120,47 @@ for(int value : numbers) {
 }
 ```
 
+<br><br>
+
+### ArrayList 구현 with Java
+
+객체 내부에서 사용할 것이므로 private으로 배열을 선언한다.
+
+ArrayList로 데이터 추가를 구현하기 위해서는 추가할 인덱스 뒤의 모든 데이터를 한 칸씩 이동시켜야 한다.
+
+100개면 100개, 100만개면 100만개의 인덱스를 +1해서 이동시켜야 하므로 시간이 오래 소요된다.
+
+그래서 데이터의 추가/삭제를 구현할 때 ArrayList는 속도 측면에서 불리하다.
+
+- LinkedList가 유리
+
+<br>
+
+ArrayList 구현 중 데이터 확인하는 메소드 구현하기.
+
+System.out.println에 배열 전달하기만 했을 뿐인데 이게 어떻게 나오지?
+
+```java
+// Main.java
+System.out.println(numbers);
+
+// ArrayList.java
+public String toString() {
+  String str = "[";
+
+  for(int i = 0; i < size; i++) {
+    str += elementData[i];
+    
+    if(i < size - 1) {
+      str += ", ";
+    }
+  }
+
+  return str + "]";
+}
+```
+
+> [0, 10, 50, 20, 30, 40, 100]
 
 
-
-
-### ArrayList 구현
 
