@@ -138,8 +138,6 @@ ArrayList로 데이터 추가를 구현하기 위해서는 추가할 인덱스 �
 
 ArrayList 구현 중 데이터 확인하는 메소드 구현하기.
 
-System.out.println에 배열 전달하기만 했을 뿐인데 이게 어떻게 나오지?
-
 ```java
 // Main.java
 System.out.println(numbers);
@@ -162,5 +160,9 @@ public String toString() {
 
 > [0, 10, 50, 20, 30, 40, 100]
 
+System.out.println에 배열을 전달하기만 했을 뿐인데 이게 어떻게 나오지?
 
+- 출력 함수에 객체 참조 변수를 전달하면 toString()이 자동으로 수행된다.
+- 아래 코드에서 println 안의 numbers 뒤에 toString()이 생략되어 있는 상태이다.
+- ArrayList.java의 toString() 메소드는 Object의 toString()을 오버라이딩을 한 것이다.
 
