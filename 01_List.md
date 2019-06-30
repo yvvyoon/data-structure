@@ -136,7 +136,7 @@ ArrayList로 데이터 추가를 구현하기 위해서는 추가할 인덱스 �
 
 <br>
 
-ArrayList 구현 중 데이터 확인하는 메소드 구현하기.
+#### 데이터 확인 메소드
 
 ```java
 // Main.java
@@ -165,4 +165,62 @@ System.out.println에 배열을 전달하기만 했을 뿐인데 이게 어떻�
 - 출력 함수에 객체 참조 변수를 전달하면 toString()이 자동으로 수행된다.
 - 아래 코드에서 println 안의 numbers 뒤에 toString()이 생략되어 있는 상태이다.
 - ArrayList.java의 toString() 메소드는 Object의 toString()을 오버라이딩을 한 것이다.
+
+<br>
+
+#### 데이터 삭제 메소드
+
+```java
+public Object remove(int index) {
+        Object removedData = elementData[index];
+
+        elementData[index] = null;
+
+        for(int i = index + 1; i < size; i++) {
+            elementData[i - 1] = elementData[i];
+        }
+
+        System.out.println(size);
+        System.out.println(elementData[size]);
+
+        elementData[size] = null;
+
+        size--;
+
+        System.out.println(size);
+        System.out.println(elementData[size]);
+
+        return removedData; // 컬렉션 프레임워크의 remove는 기본적으로 삭제된 데이터를 return 하도록 동작함
+    }
+```
+
+<br>
+
+#### 반복 수행을 위해 ListIterator 클래스 구현
+
+```java
+class ListIterator {
+  private int nextIndex = 0;
+
+  // index가 size와 동일해지면 다음 값이 없음을 이용
+  public boolean hasNext() {
+    return nextIndex < size();
+  }
+
+  // 호출할 때마다 index 1 증가
+  public Object next() {
+    return elementData[nextIndex++];
+  }
+  
+  public Object previous() {
+    return elementData[--nextIndex];
+    // next를 수행으로 인덱스가 증가하면서 마지막엔 존재하지 않는 인덱스를 가리킨 상태에서 종료되기 때문에
+    // previous를 수행할 때 이미 인덱스를 하나 줄인 상태로 시작함
+  }
+
+  public boolean hasPrevious() {
+    return nextIndex > 0;
+  }
+}
+```
 
